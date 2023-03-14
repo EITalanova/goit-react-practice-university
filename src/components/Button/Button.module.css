@@ -1,0 +1,26 @@
+.btn {
+padding: 8px 16px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 1.25px;
+gap: 10px;
+
+cursor: pointer;
+
+font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.71;
+
+    border: none;
+    background-color: #ec680f;
+    color: white;
+
+    transition: background-color 250ms ease-in-out;
+}
+
+.btn:hover {
+    background-color: #ce5a0c;
+}

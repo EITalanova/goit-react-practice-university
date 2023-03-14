@@ -1,8 +1,12 @@
 import { Section } from 'components/Section/Section';
 import { Card } from 'components/Card';
 import { Paper } from 'components/Paper';
+import { TutorList } from 'components/TutorList/TutorList';
+import { Button } from 'components/Button/Button';
 
-import universityData from 'constants/universityData.json'
+import universityData from 'constants/universityData.json';
+import catIcon from 'assets/images/cat.svg';
+
 
 import style from './UniversityPage.module.css';
 
@@ -25,6 +29,10 @@ export function UniversityPage() {
             </p>
           </Paper>
         </div>
+      </Section>
+      <Section title="Викладачі" icon={catIcon}>
+        <TutorList tutors={universityData.tutors} />
+        <Button title="Додати викладачів"/>
       </Section>
     </>
   );
