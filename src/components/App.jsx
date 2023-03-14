@@ -1,16 +1,20 @@
+import React from "react";
+
+import { Sidebar } from "./Sidebar";
+import { Main } from "./Main";
+
+import { UniversityPage } from "pages/UniversityPage";
+
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
+    <div className="app"
     >
-      React homework template
+      <Sidebar />
+      <Main>
+        <UniversityPage/>
+      </Main>
     </div>
   );
 };

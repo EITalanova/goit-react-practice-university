@@ -1,4 +1,9 @@
-@import-normalize; /* bring in normalize.css styles */
+/* @import-normalize; bring in normalize.css styles */
+
+:root {
+  --main-orange: #FF6B0A;
+}
+
 
 body {
   margin: 0;
@@ -12,4 +17,32 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.university-card {
+  padding: 32px;
+}
+
+.university-wraper {
+  display: flex;
+  gap: 32px;
 }
