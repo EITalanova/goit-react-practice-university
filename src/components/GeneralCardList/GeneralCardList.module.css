@@ -1,0 +1,22 @@
+.cardList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.generalCardContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 370px;
+    max-height: 72px;
+    padding: 19px 24px;
+}
+
+.generalCardBtn {
+    border: none;
+    background-color: transparent;
+
+}
