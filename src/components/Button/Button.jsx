@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import cn from 'classnames'
 
 import add from 'assets/images/add.svg'
 
 import style from './Button.module.css'
 
-export function Button({title, onClick}) {
-    return <button className={style.btn} type="button" onClick={onClick}>
+export function Button({title, onClick, className}) {
+    return <button className={cn(style.btn, className)} type="button" onClick={onClick}>
         <img src={add} alt="add" />
         {title.toUpperCase()}
 </button>
@@ -13,5 +14,6 @@ export function Button({title, onClick}) {
 
 Button.propTypes = {
     title: PropTypes.string.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    className: PropTypes.string,
 }
