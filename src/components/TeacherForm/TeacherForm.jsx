@@ -5,7 +5,16 @@ import { Button } from 'components/Button/Button';
 
 import style from './TeacherForm.module.css';
 
-export function TeacherForm() {
+const TEACHER_FORM_BUILD = [
+  { placeholder: 'Прізвищє', name: 'lastName' },
+  { placeholder: "Ім'я", name: 'firstName' },
+  { placeholder: 'По-батькові', name: 'patronymic' },
+  { placeholder: 'Телефон', name: 'phone' },
+  { placeholder: 'Email', name: 'email' },
+  { placeholder: 'Місто', name: 'city' },
+];
+
+export function TeacherForm({ addTutor }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -13,7 +22,6 @@ export function TeacherForm() {
     phone: '',
     email: '',
     city: '',
-
   });
 
   function handleChange(e) {
@@ -21,13 +29,18 @@ export function TeacherForm() {
     setFormData({
       ...formData,
       [name]: value,
-     })
+    });
   }
 
   function checkSummitAbility(formState) {
     return Object.values(formState).every(value => {
       return value.length > 1;
-    })
+    });
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    addTutor(formData);
   }
 
   const isEnableSubmit = checkSummitAbility(formData);
@@ -35,37 +48,27 @@ export function TeacherForm() {
   return (
     <Paper className={style.formWrapper}>
       <h3 className={style.formTitle}>Додати викладача</h3>
-      <form className={style.form}>
-        <label>
-          <input
-            required
-            className={style.formInput}
-            name="lastName"
-            placeholder="Прізвищє"
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <input required className={style.formInput} placeholder="Ім'я" onChange={handleChange} name="firstName"/>
-        </label>
-        <label>
-          <input
-            required
-            className={style.formInput}
-            placeholder="По-батькові"
-            onChange={handleChange} name="patronymic"
-          />
-        </label>
-        <label>
-          <input required className={style.formInput} placeholder="Телефон" onChange={handleChange} name="phone"/>
-        </label>
-        <label>
-          <input required className={style.formInput} placeholder="Email" onChange={handleChange} name="email" />
-        </label>
-        <label>
-          <input required className={style.formInput} placeholder="Місто" onChange={handleChange} name="city"/>
-        </label>
-        <Button className={style.tutorBtn} title="Запросити" type="submit" disabled={!isEnableSubmit} />
+      <form className={style.form} onSubmit={onSubmit}>
+        {TEACHER_FORM_BUILD.map(({ placeholder, name }) => {
+          return (
+            <label key={name}>
+              <input
+                required
+                className={style.formInput}
+                name={name}
+                placeholder={placeholder}
+                onChange={handleChange}
+              />
+            </label>
+          );
+        })}
+
+        <Button
+          className={style.tutorBtn}
+          title="Запросити"
+          type="submit"
+          disabled={!isEnableSubmit}
+        />
       </form>
     </Paper>
   );
