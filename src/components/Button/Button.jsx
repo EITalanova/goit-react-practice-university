@@ -5,8 +5,8 @@ import add from 'assets/images/add.svg'
 
 import style from './Button.module.css'
 
-export function Button({title, onClick, className}) {
-    return <button className={cn(style.btn, className)} type="button" onClick={onClick}>
+export function Button({title, onClick, className, ...restProps}) {
+    return <button className={cn(style.btn, className)} type="button" onClick={onClick} {...restProps}>
         <img src={add} alt="add" />
         {title.toUpperCase()}
 </button>
