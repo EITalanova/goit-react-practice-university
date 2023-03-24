@@ -7,7 +7,7 @@ import style from './WidgetForm.module.css';
 
 export const WidgetForm = ({
     title,
-    label,
+    placeholder,
     buttonName,
     handleSubmit
 }) => {

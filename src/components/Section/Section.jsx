@@ -23,5 +23,5 @@ Section.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  // icon: PropTypes.string.isRequired,
 };

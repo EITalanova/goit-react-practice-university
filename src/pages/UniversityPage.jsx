@@ -16,18 +16,36 @@ import robot from 'assets/images/robot.svg';
 
 import style from './UniversityPage.module.css';
 
+const FORM_KEYS = {
+  teacherForm: 'teacher',
+  cityForm: 'city',
+  facultyForm: 'faculty',
+};
 
 export function UniversityPage() {
-  const [modeMenu, setModeMenu] = useState(false);
+  const [modeMenu, setModeMenu] = useState([]);
   const [tutors, setTutors] = useState(universityData.tutors);
-  const toggleMenu = () => {
-    setModeMenu(!modeMenu);
+  const [cities, setCities] = useState(
+    universityData.cities.map(city => ({
+      name: city,
+    }))
+  );
+  const toggleMenu = key => {
+    const index = modeMenu.indexOf(key);
+    if (index < 0) {
+      setModeMenu([...modeMenu, key]);
+    }
+    if (index > 0) {
+      setModeMenu([...modeMenu.splice(index, 1)]);
+    }
   };
-  const addTutor = (tutor) => {
+  const addTutor = tutor => {
     setTutors([...universityData.tutors, tutor]);
-}
+  };
 
-  const cities = universityData.cities.map(city => ({ name: city }));
+  const addCity = city => {
+    setCities([...cities, city]);
+  };
 
   return (
     <>
@@ -49,14 +67,24 @@ export function UniversityPage() {
         </div>
       </Section>
       <Section title="Викладачі" icon={catIcon}>
-        <TutorList tutors={tutors}/>
-        {modeMenu && <TeacherForm addTutor={addTutor} />}
-        <Button title="Додати викладачів" onClick={toggleMenu} />
+        <TutorList tutors={tutors} />
+        {modeMenu.includes(FORM_KEYS.teacherForm) && (
+          <TeacherForm addTutor={addTutor} />
+        )}
+        <Button
+          title="Додати викладачів"
+          onClick={() => toggleMenu(FORM_KEYS.teacherForm)}
+        />
       </Section>
       <Section icon={cityMarker} title="Міста">
         <GeneralCardList list={cities} />
-        {modeMenu && <WidgetForm />}
-        <Button title="Додати місто" />
+        {modeMenu.includes(FORM_KEYS.cityForm) && (
+          <WidgetForm handleSubmit={addCity} buttonName="Додати" />
+        )}
+        <Button
+          title="Додати місто"
+          onClick={() => toggleMenu(FORM_KEYS.cityForm)}
+        />
       </Section>
       <Section icon={robot} title="Факультети">
         <GeneralCardList list={universityData.department} />
