@@ -25,26 +25,43 @@ const FORM_KEYS = {
 export function UniversityPage() {
   const [modeMenu, setModeMenu] = useState([]);
   const [tutors, setTutors] = useState(universityData.tutors);
+  const [faculties, setFaculties] = useState(universityData.department);
   const [cities, setCities] = useState(
     universityData.cities.map(city => ({
       name: city,
     }))
   );
   const toggleMenu = key => {
-    const index = modeMenu.indexOf(key);
-    if (index < 0) {
-      setModeMenu([...modeMenu, key]);
+    const element = modeMenu.find(el => el === key);
+    if (!element) {
+      setModeMenu(prev => [...prev, key]);
     }
-    if (index > 0) {
-      setModeMenu([...modeMenu.splice(index, 1)]);
+    if (element) {
+      const newModeMenu = modeMenu.filter(el => el !== key);
+      setModeMenu(newModeMenu);
     }
   };
+
+  const isModeMenuIncludes = key => {
+    return modeMenu.includes(key);
+  };
+
+  const isTeacherFormOpened = isModeMenuIncludes(FORM_KEYS.teacherForm);
+  const isCityFormOpened = isModeMenuIncludes(FORM_KEYS.cityForm);
+  const isFacultyFormOpened = isModeMenuIncludes(FORM_KEYS.facultyForm);
+
   const addTutor = tutor => {
     setTutors([...universityData.tutors, tutor]);
   };
 
   const addCity = city => {
-    setCities([...cities, city]);
+    const newCity = { name: city };
+    setCities([...cities, newCity]);
+  };
+
+  const addFaculty = faculty => {
+    const newFaculty = { name: faculty };
+    setFaculties([...faculties, newFaculty]);
   };
 
   return (
@@ -68,27 +85,45 @@ export function UniversityPage() {
       </Section>
       <Section title="Викладачі" icon={catIcon}>
         <TutorList tutors={tutors} />
-        {modeMenu.includes(FORM_KEYS.teacherForm) && (
+        {isTeacherFormOpened && (
           <TeacherForm addTutor={addTutor} />
         )}
         <Button
-          title="Додати викладачів"
+          title={isTeacherFormOpened ? "Закрити форму" : "Додати викладача"}
           onClick={() => toggleMenu(FORM_KEYS.teacherForm)}
         />
       </Section>
       <Section icon={cityMarker} title="Міста">
         <GeneralCardList list={cities} />
-        {modeMenu.includes(FORM_KEYS.cityForm) && (
-          <WidgetForm handleSubmit={addCity} buttonName="Додати" />
+        {isCityFormOpened && (
+          <WidgetForm
+            handleSubmit={addCity}
+            buttonName="Додати"
+            title= "Міста"
+            placeholder="Місто"
+          />
         )}
         <Button
-          title="Додати місто"
+          title={isCityFormOpened ? "Закрити форму" : "Додати місто"}
           onClick={() => toggleMenu(FORM_KEYS.cityForm)}
         />
       </Section>
       <Section icon={robot} title="Факультети">
-        <GeneralCardList list={universityData.department} />
-        <Button title="Додати факультет" />
+        <GeneralCardList list={faculties} />
+        {isFacultyFormOpened && (
+          <WidgetForm
+            handleSubmit={addFaculty}
+            buttonName="Додати"
+            title="Факультети"
+            placeholder="Факультет"
+          />
+        )}
+        <Button
+          title={isFacultyFormOpened ? "Закрити форму" : "Додати факультет"}
+          onClick={() => {
+            toggleMenu(FORM_KEYS.facultyForm);
+          }}
+        />
       </Section>
     </>
   );

@@ -14,15 +14,17 @@ const TEACHER_FORM_BUILD = [
   { placeholder: 'Місто', name: 'city' },
 ];
 
-export function TeacherForm({ addTutor }) {
-  const [formData, setFormData] = useState({
-    firstName: '',
+const INITIAL_TEACHER = {
+  firstName: '',
     lastName: '',
     patronymic: '',
     phone: '',
     email: '',
     city: '',
-  });
+}
+
+export function TeacherForm({ addTutor }) {
+  const [formData, setFormData] = useState(INITIAL_TEACHER);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -41,6 +43,7 @@ export function TeacherForm({ addTutor }) {
   function onSubmit(e) {
     e.preventDefault();
     addTutor(formData);
+    setFormData(INITIAL_TEACHER);
   }
 
   const isEnableSubmit = checkSummitAbility(formData);
@@ -58,6 +61,7 @@ export function TeacherForm({ addTutor }) {
                 name={name}
                 placeholder={placeholder}
                 onChange={handleChange}
+                value={formData[name]}
               />
             </label>
           );

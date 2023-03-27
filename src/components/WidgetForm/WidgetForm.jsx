@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Paper } from 'components/Paper';
 import { Button } from 'components/Button/Button';
 
-import style from './WidgetForm.module.css';
+import style from '../TeacherForm/TeacherForm.module.css';
 
 export const WidgetForm = ({
     title,
@@ -16,6 +16,7 @@ export const WidgetForm = ({
   function onSubmit(e) {
     e.preventDefault();
     handleSubmit(widgetFormData);
+    setWidgetFormData('');
   }
 
   function handleChange(e) {
@@ -36,6 +37,7 @@ export const WidgetForm = ({
             name={placeholder}
             placeholder={placeholder}
             onChange={handleChange}
+            value={widgetFormData}
           />
         </label>
 
