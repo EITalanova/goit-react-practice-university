@@ -14,8 +14,6 @@ import catIcon from 'assets/images/cat.svg';
 import cityMarker from 'assets/images/cityMarker.svg';
 import robot from 'assets/images/robot.svg';
 
-import style from './UniversityPage.module.css';
-
 const FORM_KEYS = {
   teacherForm: 'teacher',
   cityForm: 'city',

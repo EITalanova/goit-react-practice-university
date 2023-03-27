@@ -6,10 +6,12 @@ export const menuConfig = [
         id: 1,
         title: "Универсітет",
         image: cap,
+        pathName: "university",
     }, 
     {
         id: 2,
         title: "Факультети", 
         image: book,
+        pathName: "faculty",
     }
 ]

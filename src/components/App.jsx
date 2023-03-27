@@ -1,19 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { Sidebar } from "./Sidebar";
-import { Main } from "./Main";
+import { Sidebar } from './Sidebar';
+import { Main } from './Main';
 
-import { UniversityPage } from "pages/UniversityPage";
-
-
+import { UniversityPage } from 'pages/UniversityPage';
+import MainRoutes from './MainRoutes';
 
 export const App = () => {
   return (
-    <div className="app"
-    >
+    <div className="app">
       <Sidebar />
       <Main>
-        <UniversityPage/>
+        <MainRoutes />
       </Main>
     </div>
   );
