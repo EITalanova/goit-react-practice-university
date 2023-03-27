@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 
 const University = lazy(() => import("pages/UniversityPage"));
+// const University = lazy(() => import("pages/UniversityPage"));
+
 
 export default function MainRoutes() {
     return (
