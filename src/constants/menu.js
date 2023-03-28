@@ -6,7 +6,7 @@ export const menuConfig = [
         id: 1,
         title: "Универсітет",
         image: cap,
-        pathName: "university",
+        pathName: "/",
     }, 
     {
         id: 2,

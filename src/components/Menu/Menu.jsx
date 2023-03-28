@@ -1,6 +1,6 @@
 import { menuConfig } from 'constants/menu';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import style from './Menu.module.css';
 
@@ -19,10 +19,10 @@ export function Menu() {
 export function MenuItem({ title, image, path }) {
   return (
     <li className={style.navItem}>
-      <Link to={path} className={style.navLink}>
+      <NavLink to={path} className={navData => (navData.isActive ? style.active : style.navLink)}>
         <img src={image} alt={path} />
         <span>{title}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 }
