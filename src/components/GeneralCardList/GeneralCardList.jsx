@@ -36,8 +36,17 @@ function GeneralCard({ name }) {
   };
 
   const handleAnchor = e => {
+    if (anchor) {
+      setAnchor(null);
+      return;
+    }
     setAnchor(e.currentTarget);
   };
+
+  const handleOpenModal = () => {
+    setAnchor(null);
+    setIsOpenModal(true);
+  }
 
   return (
     <Paper className={style.generalCardContainer}>
@@ -47,7 +56,7 @@ function GeneralCard({ name }) {
       </button>
       {anchor && (
         <div className={style.action}>
-          <button type="button" className={style.actionBtn}>
+          <button type="button" className={style.actionBtn} onClick={handleOpenModal}>
             <Edit className={style.actionIcon} />
             Редагувати
           </button>

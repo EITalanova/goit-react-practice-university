@@ -1,0 +1,44 @@
+.modalEditWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 40px;
+  min-width: 560px;
+
+}
+
+.modalEditTypograhy {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.modalEditTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+
+.modalEditInput {
+  margin-top: 33px;
+  width: 100%;
+  padding: 12px 16px;
+
+  border: 1px solid #757575;
+}
+
+.modalEditSaveBtn {
+  display: block;
+  width: fit-content;
+  text-align: center;
+  margin-top: 21px;
+  margin-right: auto;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.modalEditSaveBtn > svg {
+  display: none;
+}
