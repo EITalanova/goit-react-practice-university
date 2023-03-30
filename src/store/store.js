@@ -1,3 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-export default c
+import facultyReducer from './facultySlice'
+
+export default configureStore({
+    reducer: {
+        faculty: facultyReducer,
+    },
+    devTools: true,
+})
