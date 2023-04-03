@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import add from 'assets/images/add.svg';
+import { RaectComponent as Add} from 'assets/images/add.svg';
 
 import style from './Button.module.css';
 
@@ -13,7 +13,7 @@ export function Button({ title, onClick, className, ...restProps }) {
       onClick={onClick}
       {...restProps}
     >
-      <img src={add} alt="add" />
+      <Add className={style.btnIcon} />
       {title.toUpperCase()}
     </button>
   );

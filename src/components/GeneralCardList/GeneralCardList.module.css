@@ -19,6 +19,8 @@
 .generalCardBtn {
   border: none;
   background-color: transparent;
+
+  cursor: pointer;
 }
 
 .action {

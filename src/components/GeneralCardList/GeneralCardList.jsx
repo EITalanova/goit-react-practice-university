@@ -23,11 +23,23 @@ function GeneralCard({ name }) {
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
+    // window.addEventListener('click', onOutsideClick);
+
 
     return () => {
       window.removeEventListener('keydown', onKeyDown);
+      // window.removeEventListener('click', onOutsideClick);
+
     };
   }, []);
+
+  // onOutsideClick = () => {
+  //   if (anchor) {
+  //     setAnchor(null);
+  //     return;
+  //   }
+  //   setAnchor(e.currentTarget);
+  // }
 
   const onKeyDown = (e) => {
     if (e.code === 'Escape') {
