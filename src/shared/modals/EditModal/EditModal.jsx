@@ -3,7 +3,7 @@ import { Button } from 'components/Button/Button';
 
 import style from './EditModal.module.css';
 
-export function EditModal({ placeholder }) {
+export function EditModal({ placeholder, onSubmit }) {
   return (
     <div className={style.modalEditWrapper}>
       <div className={style.modalEditTypograhy}>
@@ -13,7 +13,7 @@ export function EditModal({ placeholder }) {
       <label>
         <input className={style.modalEditInput} type="text" required placeholder={placeholder} />
       </label>
-      <Button className={style.modalEditSaveBtn} title="Зберегті"></Button>
+      <Button className={style.modalEditSaveBtn} title="Зберегти"></Button>
     </div>
   );
 }

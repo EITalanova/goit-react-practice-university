@@ -57,3 +57,7 @@
 .actionIcon {
   fill: inherit;
 }
+
+.isFullItemWidth {
+  width: 100%;
+}

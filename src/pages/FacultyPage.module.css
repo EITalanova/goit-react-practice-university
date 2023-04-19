@@ -1,0 +1,5 @@
+.facultyList {
+    /* display: flex; */
+    flex-direction: column;
+}
+

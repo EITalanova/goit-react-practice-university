@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { Paper } from 'components/Paper';
-import { RaectComponent as CloseIcon } from 'assets/images/close.svg'
+import { ReactComponent as CloseIcon } from 'assets/images/close.svg';
 
 import style from './Modal.module.css';
 

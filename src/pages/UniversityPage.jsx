@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Section } from 'components/Section/Section';
 import { Card } from 'components/Card';
@@ -9,6 +9,7 @@ import { Button } from 'components/Button/Button';
 import { GeneralCardList } from 'components/GeneralCardList';
 import { TeacherForm } from 'components/TeacherForm';
 import { WidgetForm } from 'components/WidgetForm';
+import { addFaculty } from 'store/facultySlice';
 
 import universityData from 'constants/universityData.json';
 import catIcon from 'assets/images/cat.svg';
@@ -31,7 +32,8 @@ function UniversityPage() {
     }))
   );
 
-  const faculties = useSelector(state => state.faculty.department)
+  const dispatch = useDispatch();
+  // const faculties = useSelector(state => state.faculty.department)
 
   const toggleMenu = key => {
     const element = modeMenu.find(el => el === key);
@@ -48,6 +50,10 @@ function UniversityPage() {
     return modeMenu.includes(key);
   };
 
+  const handleEditModal = (id) => {
+    dispatch(editFaculty(id))
+  }
+
   const isTeacherFormOpened = isModeMenuIncludes(FORM_KEYS.teacherForm);
   const isCityFormOpened = isModeMenuIncludes(FORM_KEYS.cityForm);
   const isFacultyFormOpened = isModeMenuIncludes(FORM_KEYS.facultyForm);
@@ -61,9 +67,9 @@ function UniversityPage() {
     setCities([...cities, newCity]);
   };
 
-  const addFaculty = faculty => {
+  const onAddFaculty = faculty => {
     const newFaculty = { name: faculty };
-    // setFaculties([...faculties, newFaculty]);
+    dispatch(addFaculty(newFaculty));
   };
 
   return (
@@ -114,7 +120,7 @@ function UniversityPage() {
         <GeneralCardList list={faculties} />
         {isFacultyFormOpened && (
           <WidgetForm
-            handleSubmit={addFaculty}
+            handleSubmit={onAddFaculty}
             buttonName="Додати"
             title="Факультети"
             placeholder="Факультет"

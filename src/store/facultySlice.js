@@ -15,6 +15,9 @@ const facultySlice = createSlice({
     addFaculty(state, action) {
       state.department.push(action.payload);
     },
+    editFaculty(state, action) {
+      
+    }
   },
 });
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { RaectComponent as Add} from 'assets/images/add.svg';
+import { ReactComponent as Add} from 'assets/images/add.svg';
 
 import style from './Button.module.css';
 
