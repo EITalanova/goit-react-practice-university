@@ -50,9 +50,9 @@ function UniversityPage() {
     return modeMenu.includes(key);
   };
 
-  const handleEditModal = (id) => {
-    dispatch(editFaculty(id))
-  }
+  const handleEditModal = id => {
+    dispatch(editFaculty(id));
+  };
 
   const isTeacherFormOpened = isModeMenuIncludes(FORM_KEYS.teacherForm);
   const isCityFormOpened = isModeMenuIncludes(FORM_KEYS.cityForm);
@@ -93,11 +93,9 @@ function UniversityPage() {
       </Section>
       <Section title="Викладачі" icon={catIcon}>
         <TutorList tutors={tutors} />
-        {isTeacherFormOpened && (
-          <TeacherForm addTutor={addTutor} />
-        )}
+        {isTeacherFormOpened && <TeacherForm addTutor={addTutor} />}
         <Button
-          title={isTeacherFormOpened ? "Закрити форму" : "Додати викладача"}
+          title={isTeacherFormOpened ? 'Закрити форму' : 'Додати викладача'}
           onClick={() => toggleMenu(FORM_KEYS.teacherForm)}
         />
       </Section>
@@ -107,12 +105,12 @@ function UniversityPage() {
           <WidgetForm
             handleSubmit={addCity}
             buttonName="Додати"
-            title= "Міста"
+            title="Міста"
             placeholder="Місто"
           />
         )}
         <Button
-          title={isCityFormOpened ? "Закрити форму" : "Додати місто"}
+          title={isCityFormOpened ? 'Закрити форму' : 'Додати місто'}
           onClick={() => toggleMenu(FORM_KEYS.cityForm)}
         />
       </Section>
@@ -127,7 +125,7 @@ function UniversityPage() {
           />
         )}
         <Button
-          title={isFacultyFormOpened ? "Закрити форму" : "Додати факультет"}
+          title={isFacultyFormOpened ? 'Закрити форму' : 'Додати факультет'}
           onClick={() => {
             toggleMenu(FORM_KEYS.facultyForm);
           }}
